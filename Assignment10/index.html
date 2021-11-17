@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>User-Form</title>
+</head>
+<body>
+    <form action="welcome" method="GET">
+        <div class="container w-50 mx-auto border border-dark rounded mt-5">
+            <h1 class="display-5 mb-3">Assignment-10 User Info (Get Method)</h1>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input class="form-control" type="text" name="firstName"  id="firstName" autocomplete="off" >
+                <div class="alert alert-danger" id="alert-f" style="display: none;" role="alert">
+                
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input class="form-control" type="text" name="lastName"  id="lastName" >
+                <div class="alert alert-danger" id="alert-l" style="display: none;" role="alert">
+                   
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="city">City</label>
+                <input class="form-control" type="text" name="city"  id="city">
+                <div class="alert alert-danger" id="alert-c" style="display: none;" role="alert">
+                   
+                </div>
+            </div>
+
+            <button class="btn btn-outline-primary" id="button" type="submit">Submit</button>
+        </div>
+    </form>
+
+
+
+    <script>
+        $(function(){
+            let firstNameError=true;
+            let lastNameError=true;
+            let cityError=true;
+            $("#firstName").keyup(function(){
+                validateFirstName();
+            })
+
+            function validateFirstName() {
+                let firstName = $('#firstName').val();
+                if(firstName.length == ""){
+                    $("#alert-f").css("display" , "block").html("This field is required");
+                    firstNameError=false;
+                }
+                else{
+                    $("#alert-f").css("display" , "none");
+                    firstNameError=true;
+                }
+            }
+
+            $("#lastName").keyup(function(){
+                validateLastName();
+            })
+
+            function validateLastName() {
+                let lastName = $('#lastName').val();
+                if(lastName.length == ""){
+                    $("#alert-l").css("display" , "block").html("This field is required");
+                    lastNameError=false;
+                }
+                else{
+                    $("#alert-l").css("display" , "none");
+                    lastNameError=true;
+                }
+            }
+
+            $("#city").keyup(function(){
+                validateCity();
+            })
+
+            function validateCity() {
+                let city = $('#city').val();
+                if(city.length == ""){
+                    $("#alert-c").css("display" , "block").html("This field is required");
+                    cityError=false;
+                }
+                else{
+                    $("#alert-c").css("display" , "none");
+                    cityError=true;
+                }
+            }
+
+            $("#button").on("click",()=>{
+                validateFirstName();
+                validateLastName();
+                validateCity();
+                if(firstNameError===true && lastNameError===true && cityError===true){
+                    return true
+                }
+                else{
+                    return false
+                }
+            })
+        })
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+</body>
+</html>
